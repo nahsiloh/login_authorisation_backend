@@ -1,0 +1,32 @@
+{
+  "name": "login_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:all": "npm run lint && npm run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
+    "cross-env": "^7.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.11"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.6.0",
+    "jest": "^25.1.0",
+    "mongodb-memory-server": "^6.2.4",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
+  }
+}
