@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Client = require("../models/Client");
+const User = require("../models/User");
 
 router.get("/", async (req, res, next) => {
   try {
-    const clients = await Client.find();
-    res.send(clients);
+    const users = await User.find();
+    res.send(users);
   } catch (err) {
     next(err);
   }
@@ -13,10 +13,10 @@ router.get("/", async (req, res, next) => {
 
 router.post("/new", async (req, res, next) => {
   try {
-    const client = new Client(req.body);
-    await Client.init();
-    const newClient = await client.save();
-    res.send(newClient);
+    const user = new User(req.body);
+    await User.init();
+    const newUser = await user.save();
+    res.send(newUser);
   } catch (err) {
     if (err.name === "ValidationError") {
       err.status = 400;

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const dbName = "client-db";
+const dbName = "user-db";
 
 let dbUrl;
 if (process.env.NODE_ENV === "development") {
@@ -7,6 +7,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 mongoose.connect(dbUrl, {
+  useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

@@ -3,11 +3,11 @@ const app = express();
 
 app.use(express.json());
 
-if (process.env.NODE_ENV !== "client-db") {
+if (app.get("env") !== "test") {
   require("./db");
 }
 
-const clients = require("./routes/clients");
-app.use("/clients", clients);
+const users = require("./routes/user");
+app.use("/users", users);
 
 module.exports = app;
