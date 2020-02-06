@@ -9,7 +9,8 @@ if (process.env.NODE_ENV === "development") {
 mongoose.connect(dbUrl, {
   useCreateIndex: true,
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;
