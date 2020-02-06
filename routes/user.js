@@ -7,13 +7,20 @@ const User = require("../models/User");
 
 const JWT_SECRET_KEY = "Secret";
 
-router.get("/", async (req, res, next) => {
+const authenticationController = async (req, res, next) => {
   try {
-    const users = await User.find();
-    res.send(users);
+    if (!req.cookies.token) {
+      throw new Error("Login to receive your secret message");
+    }
+    req.user = jwt.verify(req.cookies.token, JWT_SECRET_KEY);
+    next();
   } catch (err) {
-    next(err);
+    res.status(401).end("You are not authorized!");
   }
+};
+
+router.get("/", authenticationController, async (req, res, next) => {
+  res.send("The Secret is Emporio Analytics");
 });
 
 router.post("/new", async (req, res, next) => {
