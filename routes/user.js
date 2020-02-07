@@ -24,11 +24,6 @@ router.get("/message", authenticationController, async (req, res, next) => {
 router.post("/new", async (req, res, next) => {
   try {
     const user = new User(req.body);
-
-    const rounds = 10;
-    const hash = await bcrypt.hash(user.password, rounds);
-    user.password = hash;
-
     await User.init();
     const newUser = await user.save();
     res.send(newUser);
